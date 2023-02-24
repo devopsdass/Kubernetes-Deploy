@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-hello
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: helloworld
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+        - name: hello-world
+          image: 251590692499.dkr.ecr.ap-south-1.amazonaws.com/hello-repository:                                                                                        latest
+          ports:
+            - containerPort: 80
+---
+# Load Balancer Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: helloworld
+  ports:
+    - port: 8080
+      targetPort: 80
