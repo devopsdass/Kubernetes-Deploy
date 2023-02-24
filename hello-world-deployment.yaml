@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: hello-world
-          image: 251590692499.dkr.ecr.ap-south-1.amazonaws.com/hello-repository:                                                                                        latest
+          image: 251590692499.dkr.ecr.ap-south-1.amazonaws.com/hello-repository:latest
           ports:
             - containerPort: 80
 ---
